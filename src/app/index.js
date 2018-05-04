@@ -6,11 +6,13 @@ import store from './store';
 import App from './container/App.jsx';
 import './index.css';
 import 'font-awesome/css/font-awesome.css';
+import Home from '../app/components/Home/Home';
 
 render(
 <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} >
+                <IndexRoute component={Home} />
             </Route>
         </Router>
     </Provider>,
