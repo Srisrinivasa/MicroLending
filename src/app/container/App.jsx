@@ -6,10 +6,10 @@ import './App.scss';
 class App extends React.Component {
   render() {
     return (
-            <section className='container-fluid no-padding bg' id='AppSection'>
+            <section className='container-fluid no-padding' id='AppSection'>
                     <div className='row no-margin'>
                         <div className='col-md-12 no-padding'>
-                            <h1>Sathwik</h1>
+                            <h1>Landing Page</h1>
                         </div>
                     </div>
             </section>
