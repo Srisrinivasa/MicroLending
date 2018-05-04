@@ -28,6 +28,15 @@ var products = [{
 ];
 
 class Lender extends React.Component {
+  applyLoan = (cell, row) => {
+    alert('Loan applied for ' + row.name);
+  }
+
+  buttonFormatter =  (cell, row) => {
+    return <button className="btn btn-sm btn-primary"
+    onClick={() => this.applyLoan(cell, row)}>Apply</button>;
+  };
+
   render() {
     return (
         <section className='container-fluid' id='LenderSection'>
@@ -38,9 +47,11 @@ class Lender extends React.Component {
                             data={ products }
                             pagination>
                             <TableHeaderColumn dataField='id' isKey>Product ID</TableHeaderColumn>
-                            <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-                            <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-                            <TableHeaderColumn dataField='roi'>Roi</TableHeaderColumn>
+                              <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
+                              <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+                              <TableHeaderColumn dataField='roi'>Roi</TableHeaderColumn>
+                              <TableHeaderColumn dataField="button"
+                              dataFormat={this.buttonFormatter}>Button</TableHeaderColumn>
                         </BootstrapTable>
                     </div>
                 </div>
