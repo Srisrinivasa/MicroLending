@@ -1,12 +1,13 @@
 import React from 'react';
 import './Home.scss';
+import Lender from '../../container/Lender/Lender';
 
 const Home = () => {
     return (
         <div className='container-fluid no-padding' id="landing-home">
             <div className="row">
                 <div className="col-md-6">
-                    Table
+                    <Lender />
                 </div>
                 <div className="col-md-6">
                     <h3>Lending Platform</h3>
