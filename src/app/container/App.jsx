@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import  NavigationBar from '../components/NavigationBar/NavigationBar';
 import './App.scss';
 
 class App extends React.Component {
   render() {
     return (
             <section className='container-fluid no-padding' id='AppSection'>
+                <NavigationBar />
                     <div className='row no-margin'>
                         <div className='col-md-12 no-padding'>
-                            <h1>Landing Page</h1>
+                            {this.props.children}
                         </div>
                     </div>
             </section>
@@ -17,17 +19,4 @@ class App extends React.Component {
   };
 };
 
-// const mapStateToProps = (_state) => {
-//     let state = _state;
-//     return {
-//         reducerName: state.reducerName,
-//       };
-//   };
-
-// const mapDispatchToProps = (_dispatch) => {
-//     let dispatch = _dispatch;
-//     return bindActionCreators({ actionName }, dispatch);
-//   };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
