@@ -1,5 +1,6 @@
 {
     "preset": "airbnb",
     "requireCurlyBraces": null ,
-    "disallowQuotedKeysInObjects": false
+    "disallowQuotedKeysInObjects": false,
+    "requireShorthandArrowFunctions": false
 }
