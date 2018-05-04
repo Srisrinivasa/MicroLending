@@ -4,11 +4,13 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import store from './store';
 import App from './container/App.jsx';
+import Home from '../app/components/Home/Home';
 
 render(
 <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} >
+                <IndexRoute component={Home} />
             </Route>
         </Router>
     </Provider>,
