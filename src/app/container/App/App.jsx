@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
+import NavigationBar from '../../components/NavigationBar/NavigationBar.jsx';
 import './App.scss';
 
 class App extends React.Component {
