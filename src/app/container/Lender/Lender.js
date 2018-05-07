@@ -52,14 +52,6 @@ class Lender extends React.Component {
                       <input value = {this.props.borrowerReducer.selectedLender.price}
                        type="number" className="form-control" id="amount" />
                   </div>
-                  <div className="form-group">
-                      <label>Rate of Interest:</label>
-                      <input value = {this.props.borrowerReducer.selectedLender.roi}
-                      disabled
-                       type="number" className="form-control" id="roi" />
-                  </div>
-                  <button
-                   type="submit" className="btn btn-default">Submit</button>
               </form>
           );
 

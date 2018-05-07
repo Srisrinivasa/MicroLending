@@ -12,6 +12,8 @@ const BootStrapModal = (props) => {
                   {props.body}
                 </Modal.Body>
                 <Modal.Footer>
+                 <Button onClick={props.submit}>Submit</Button>
+                  <Button onClick={props.handleClose}>Close</Button>
                 </Modal.Footer>
                 </Modal>
         );
