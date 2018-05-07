@@ -27,6 +27,12 @@ export default function borrowerReducer(state = {
             ...state,
           };
     return state;
+  case 'UPDATE_INPUT':
+    state = {
+      ...state,
+      [action.payload.name]: action.payload.value,
+    };
+    return state;
   case 'SHOW_LOAN_MODAL':
     state = {
             ...state,

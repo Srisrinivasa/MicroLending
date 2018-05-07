@@ -11,6 +11,13 @@ export function ShowLoanModal() {
   };
 }
 
+export function UpdateInput(event) {
+  return {
+    type: 'UPDATE_INPUT',
+    payload: event.target,
+  };
+}
+
 export function UpdateCurrentLender(lender) {
   return {
     type: 'UPDATE_LENDER',

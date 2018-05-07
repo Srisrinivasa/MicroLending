@@ -28,6 +28,10 @@ class Lender extends React.Component {
     alert("Loan applied");
   };
 
+  updateInput = (event) => {
+    this.props.UpdateInput(event);
+  }
+
   handleClose = () => {
     this.props.CloseLoanModal();
     browserHistory.push('/about');
@@ -43,13 +47,14 @@ class Lender extends React.Component {
               <form onSubmit={this.applyLoanForm}>
                 <div className="form-group">
                       <label>Lender Name:</label>
-                      <input value = {this.props.borrowerReducer.selectedLender.name}
-                      disabled
+                      <input value = {this.props.borrowerReducer.lenderName}
+                      onChange={this.updateInput} name="lenderName"
                       type="text" className="form-control" id="lender_name" />
                   </div>
                   <div className="form-group">
                       <label>Amount:</label>
-                      <input value = {this.props.borrowerReducer.selectedLender.price}
+                      <input value = {this.props.borrowerReducer.lenderAmount}
+                      onChange={this.updateInput} name="lenderAmount"
                        type="number" className="form-control" id="amount" />
                   </div>
               </form>
@@ -104,6 +109,10 @@ const mapDispatchToProps = dispatch => ({
 
     UpdateCurrentLender: (lender) => {
       dispatch(borrwerActions.UpdateCurrentLender(lender));
+    },
+
+    UpdateInput: (event) => {
+      dispatch(borrwerActions.UpdateInput(event));
     },
   });
 
