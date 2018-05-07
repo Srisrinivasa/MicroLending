@@ -11,6 +11,13 @@ export function ShowLoanModal() {
   };
 }
 
+export function UpdateCurrentLender(lender) {
+  return {
+    type: 'UPDATE_LENDER',
+    lender: lender,
+  };
+}
+
 export function CloseLoanModal() {
   return {
     type: 'CLOSE_LOAN_MODAL',

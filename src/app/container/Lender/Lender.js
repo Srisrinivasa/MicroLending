@@ -19,15 +19,14 @@ class Lender extends React.Component {
   }
 
   applyLoan = (cell, row) => {
+    this.props.UpdateCurrentLender(row);
     this.props.ShowLoanModal();
   };
 
-  login(event) {
+  applyLoanForm = (event) => {
     event.preventDefault();
-    this.setState({
-      show: false,
-    });
-  }
+    alert("Loan applied");
+  };
 
   handleClose = () => {
     this.props.CloseLoanModal();
@@ -41,16 +40,26 @@ class Lender extends React.Component {
 
   render() {
     let loanForm = (
-              <form onSubmit={this.login}>
+              <form onSubmit={this.applyLoanForm}>
                 <div className="form-group">
                       <label>Lender Name:</label>
-                      <input type="text" className="form-control" id="lender_name" />
+                      <input value = {this.props.borrowerReducer.selectedLender.name}
+                      disabled
+                      type="text" className="form-control" id="lender_name" />
                   </div>
                   <div className="form-group">
                       <label>Amount:</label>
-                      <input type="number" className="form-control" id="amount" />
+                      <input value = {this.props.borrowerReducer.selectedLender.price}
+                       type="number" className="form-control" id="amount" />
                   </div>
-                  <button type="submit" className="btn btn-default">Submit</button>
+                  <div className="form-group">
+                      <label>Rate of Interest:</label>
+                      <input value = {this.props.borrowerReducer.selectedLender.roi}
+                      disabled
+                       type="number" className="form-control" id="roi" />
+                  </div>
+                  <button
+                   type="submit" className="btn btn-default">Submit</button>
               </form>
           );
 
@@ -77,6 +86,7 @@ class Lender extends React.Component {
                 <BootStrapModal
                   handleClose={this.handleClose} heading="Login Form"
                   body={loanForm}
+                  submit={this.applyLoanForm}
                   show={this.props.borrowerReducer.showLoanModal}
                 />
             </section>
@@ -98,6 +108,10 @@ const mapDispatchToProps = dispatch => ({
 
     CloseLoanModal: () => {
       dispatch(borrwerActions.CloseLoanModal());
+    },
+
+    UpdateCurrentLender: (lender) => {
+      dispatch(borrwerActions.UpdateCurrentLender(lender));
     },
   });
 

@@ -18,6 +18,7 @@ export default function borrowerReducer(state = {
         roi: 5,
       },
     ],
+    selectedLender: {},
     showLoanModal: false,
   }, action) {
   switch (action.type) {
@@ -30,6 +31,12 @@ export default function borrowerReducer(state = {
     state = {
             ...state,
             showLoanModal: action.showLoanModal,
+          };
+    return state;
+  case 'UPDATE_LENDER':
+    state = {
+            ...state,
+            selectedLender: action.lender,
           };
     return state;
   case 'CLOSE_LOAN_MODAL':
