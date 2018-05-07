@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import BootStrapModal from '../../components/Modal/BootStrapModal.jsx';
 import './Lender.scss';
+import * as borrwerActions from '../../actions/borrowerAction';
 
 // with es6
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
@@ -18,9 +19,7 @@ class Lender extends React.Component {
   }
 
   applyLoan = (cell, row) => {
-    this.setState({
-      show: true,
-    });
+    this.props.ShowLoanModal();
   };
 
   login(event) {
@@ -31,9 +30,7 @@ class Lender extends React.Component {
   }
 
   handleClose = () => {
-    this.setState({
-      show: false,
-    });
+    this.props.CloseLoanModal();
     browserHistory.push('/about');
   };
 
@@ -80,7 +77,7 @@ class Lender extends React.Component {
                 <BootStrapModal
                   handleClose={this.handleClose} heading="Login Form"
                   body={loanForm}
-                  show={this.state.show}
+                  show={this.props.borrowerReducer.showLoanModal}
                 />
             </section>
         );
@@ -94,9 +91,14 @@ const mapStateToProps = (_state) => {
     };
   };
 
-const mapDispatchToProps = (_dispatch) => {
-    let dispatch = _dispatch;
-    return bindActionCreators({  }, dispatch);
-  };
+const mapDispatchToProps = dispatch => ({
+    ShowLoanModal: () => {
+      dispatch(borrwerActions.ShowLoanModal());
+    },
+
+    CloseLoanModal: () => {
+      dispatch(borrwerActions.CloseLoanModal());
+    },
+  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lender);
