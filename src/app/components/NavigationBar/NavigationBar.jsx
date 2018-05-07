@@ -19,16 +19,14 @@ const NavigationBar = (props) => {
       </Navbar.Header>
 
       <Navbar.Collapse>
-        <Nav>
-          <NavItem componentClass={Link} href="/" to="/">
-            <i className="fa fa-home"></i>&nbsp;Home
-              </NavItem>
-          <NavItem componentClass={Link} href="/" to="/">
-            <i className="fa fa-home"></i>&nbsp;Page2
-              </NavItem>
-        </Nav>
         <Nav pullRight>
-          <NavItem href="#">
+          <NavItem componentClass={Link} href="/" to="/">
+            Home
+              </NavItem>
+          <NavItem componentClass={Link} href="/" to="/">
+            Page2
+              </NavItem>
+           <NavItem href="#">
           <i className="fa fa-sign-in"></i>&nbsp;LogIn
       </NavItem>
         </Nav>

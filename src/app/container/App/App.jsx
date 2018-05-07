@@ -7,7 +7,7 @@ import './App.scss';
 class App extends React.Component {
   render() {
     return (
-        <section className='container-fluid no-padding bg h100 w100' id='AppSection'>
+        <section className='container-fluid no-padding h100 w100' id='AppSection'>
                 <div className='row no-margin h100 w100'>
                     <div className='col-md-12 no-padding h100 w100'>
                     <div className='row-no-margin' id='headerSection'>

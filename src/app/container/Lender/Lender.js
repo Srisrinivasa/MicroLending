@@ -42,11 +42,11 @@ class Lender extends React.Component {
         <section className='container-fluid' id='LenderSection'>
                 <div className='row'>
                     <div className='col-md-12'>
-                       <h3>Lenders list</h3>
+                       <h1>Borrowers list</h1>
                         <BootstrapTable
                             data={ products }
                             pagination>
-                            <TableHeaderColumn dataField='id' isKey>Product ID</TableHeaderColumn>
+                              <TableHeaderColumn dataField='id' isKey>Product ID</TableHeaderColumn>
                               <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
                               <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
                               <TableHeaderColumn dataField='roi'>Roi</TableHeaderColumn>
