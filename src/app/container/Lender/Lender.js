@@ -1,36 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
+import BootStrapModal from '../../components/Modal/BootStrapModal.jsx';
 import './Lender.scss';
 
 // with es6
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 
-var products = [{
-    id: 1,
-    name: 'Abhijit',
-    price: 10000,
-    roi: 8.5,
-  },
-  {
-    id: 2,
-    name: 'Sathwik',
-    price: 5000,
-    roi: 8,
-  },
-  {
-    id: 3,
-    name: 'Kaushik',
-    price: 1000,
-    roi: 5,
-  },
-];
-
 class Lender extends React.Component {
-  applyLoan = (cell, row) => {
-    alert('Loan applied for ' + row.name);
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      show: false,
+    };
   }
+
+  applyLoan = (cell, row) => {
+    this.setState({
+      show: true,
+    });
+  };
+
+  login(event) {
+    event.preventDefault();
+    this.setState({
+      show: false,
+    });
+  }
+
+  handleClose = () => {
+    this.setState({
+      show: false,
+    });
+    browserHistory.push('/about');
+  };
 
   buttonFormatter =  (cell, row) => {
     return <button className="btn btn-sm btn-primary"
@@ -38,23 +43,45 @@ class Lender extends React.Component {
   };
 
   render() {
+    let loanForm = (
+              <form onSubmit={this.login}>
+                <div className="form-group">
+                      <label>Lender Name:</label>
+                      <input type="text" className="form-control" id="lender_name" />
+                  </div>
+                  <div className="form-group">
+                      <label>Amount:</label>
+                      <input type="number" className="form-control" id="amount" />
+                  </div>
+                  <button type="submit" className="btn btn-default">Submit</button>
+              </form>
+          );
+
     return (
         <section className='container-fluid' id='LenderSection'>
                 <div className='row'>
                     <div className='col-md-12'>
                        <h1>Borrowers list</h1>
                         <BootstrapTable
-                            data={ products }
+                            data={ this.props.borrowerReducer.lenders }
+                            ordered={ true }
                             pagination>
                               <TableHeaderColumn dataField='id' isKey>Product ID</TableHeaderColumn>
-                              <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-                              <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+                              <TableHeaderColumn dataField='name'>Lender Name</TableHeaderColumn>
+                              <TableHeaderColumn dataField='price'>Amount</TableHeaderColumn>
                               <TableHeaderColumn dataField='roi'>Roi</TableHeaderColumn>
                               <TableHeaderColumn dataField="button"
                               dataFormat={this.buttonFormatter}>Button</TableHeaderColumn>
                         </BootstrapTable>
                     </div>
                 </div>
+
+                {/* Display Modal */}
+                <BootStrapModal
+                  handleClose={this.handleClose} heading="Login Form"
+                  body={loanForm}
+                  show={this.state.show}
+                />
             </section>
         );
   };
@@ -63,6 +90,7 @@ class Lender extends React.Component {
 const mapStateToProps = (_state) => {
     let state = _state;
     return {
+      borrowerReducer: state.borrowerReducer,
     };
   };
 
