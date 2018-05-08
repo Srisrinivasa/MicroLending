@@ -9,8 +9,6 @@ import './index.css';
 import 'font-awesome/css/font-awesome.css';
 import Home from '../app/components/Home/Home';
 
-store.dispatch(borrowerActions.GetLenderList());
-
 render(
 <Provider store={store}>
         <Router history={browserHistory}>

@@ -32,7 +32,3 @@
       -webkit-appearance: none;
       margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
   }
-
-  .form-control[disabled] {
-    background-color: #D3D3D3 !important;
-  }

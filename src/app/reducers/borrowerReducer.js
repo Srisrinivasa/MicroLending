@@ -1,26 +1,6 @@
-export default function borrowerReducer(state = {
-    lenders: [{
-        id: 1,
-        name: 'Abhijit',
-        price: 10000,
-        roi: 8.5,
-      },
-      {
-        id: 2,
-        name: 'Sathwik',
-        price: 5000,
-        roi: 8,
-      },
-      {
-        id: 3,
-        name: 'Kaushik',
-        price: 1000,
-        roi: 5,
-      },
-    ],
-    selectedLender: {},
-    showLoanModal: false,
-  }, action) {
+import initialState from '../common/initialstates';
+
+export default function borrowerReducer(state = initialState.borrowerReducer, action) {
   switch (action.type) {
   case 'GET_LENDER_LIST':
     state = {
@@ -43,6 +23,18 @@ export default function borrowerReducer(state = {
     state = {
             ...state,
             selectedLender: action.lender,
+          };
+    return state;
+  case 'SET_TRUE':
+    state = {
+            ...state,
+            [action.payload]: true,
+          };
+    return state;
+  case 'SET_FALSE':
+    state = {
+            ...state,
+            [action.payload]: false,
           };
     return state;
   case 'CLOSE_LOAN_MODAL':

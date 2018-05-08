@@ -4,10 +4,17 @@ export function GetLenderList() {
     };
 }
 
-export function ShowLoanModal() {
+export function SetTrue(param) {
   return {
-    type: 'SHOW_LOAN_MODAL',
-    showLoanModal: true,
+    type: 'SET_TRUE',
+    payload: param,
+  };
+}
+
+export function SetFalse(param) {
+  return {
+    type: 'SET_FALSE',
+    payload: param,
   };
 }
 
@@ -25,9 +32,3 @@ export function UpdateCurrentLender(lender) {
   };
 }
 
-export function CloseLoanModal() {
-  return {
-    type: 'CLOSE_LOAN_MODAL',
-    showLoanModal: false,
-  };
-}

@@ -18,9 +18,14 @@ class Lender extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.props.GetLenderList();
+  }
+
   applyLoan = (cell, row) => {
+    console.log(this.props);
     this.props.UpdateCurrentLender(row);
-    this.props.ShowLoanModal();
+    this.props.SetTrue('showLoanModal');
   };
 
   applyLoanForm = (event) => {
@@ -30,11 +35,11 @@ class Lender extends React.Component {
 
   updateInput = (event) => {
     this.props.UpdateInput(event);
-  }
+  };
 
   handleClose = () => {
-    this.props.CloseLoanModal();
-    browserHistory.push('/about');
+    this.props.SetFalse('showLoanModal');
+    // browserHistory.push('/about');
   };
 
   buttonFormatter =  (cell, row) => {
@@ -98,22 +103,9 @@ const mapStateToProps = (_state) => {
     };
   };
 
-const mapDispatchToProps = dispatch => ({
-    ShowLoanModal: () => {
-      dispatch(borrwerActions.ShowLoanModal());
-    },
-
-    CloseLoanModal: () => {
-      dispatch(borrwerActions.CloseLoanModal());
-    },
-
-    UpdateCurrentLender: (lender) => {
-      dispatch(borrwerActions.UpdateCurrentLender(lender));
-    },
-
-    UpdateInput: (event) => {
-      dispatch(borrwerActions.UpdateInput(event));
-    },
-  });
+const mapDispatchToProps = (_dispatch) => {
+  let dispatch = _dispatch;
+  return bindActionCreators(borrwerActions, dispatch);
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lender);
