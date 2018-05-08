@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.scss';
 import Lender from '../../container/Lender/Lender';
 import { GetStarted } from '../GetStarted/GetStarted.jsx';
+import { UserHelp } from '../UserHelp/UserHelp.jsx';
 
 const Home = () => {
     return (
@@ -25,18 +26,14 @@ const Home = () => {
                 </div>
             </div>
 
+            <div className="row no-margin">
+                    <UserHelp />
+            </div>
             
             <div className="row no-margin">
-                <div className="col-md-12">
                     <GetStarted />
-                </div>
             </div>
 
-            <div className="row no-margin">
-                <div className="col-md-12">
-
-                </div>
-            </div>
         </section>
     );
   };
