@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.scss';
-import Lender from '../../container/Lender/Lender';
+import BorrowerList from '../../container/Borrower/BorrowerList.jsx';
 import { GetStarted } from '../GetStarted/GetStarted.jsx';
 import { UserHelp } from '../UserHelp/UserHelp.jsx';
 
@@ -22,7 +22,7 @@ const Home = () => {
 
             <div className="row no-margin">
                 <div className="col-md-12">
-                    <Lender />
+                    <BorrowerList />
                 </div>
             </div>
 

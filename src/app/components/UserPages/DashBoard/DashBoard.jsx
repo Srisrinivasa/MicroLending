@@ -12,7 +12,7 @@ class DashBoard extends React.Component {
                         <UserNavigationBar />
                     </div>
                     <div className='row no-margin'>
-                        {/*{this.props.children}   */}
+                        {this.props.children}   
                     </div>
                     </div>
                 </div>
