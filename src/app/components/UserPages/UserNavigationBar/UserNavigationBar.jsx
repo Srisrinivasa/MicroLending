@@ -1,14 +1,14 @@
 import React from 'react';
-import './NavigationBar.scss';
+import './UserNavigationBar.scss';
 import { Link } from 'react-router';
 import {
   Navbar, Nav, MenuItem, NavItem,
   NavDropdown
 } from 'react-bootstrap';
 
-const NavigationBar = (props) => {
+const UserNavigationBar = (props) => {
   let navBarSection =
-    <Navbar inverse collapseOnSelect id='navBarContainer'>
+    <Navbar inverse collapseOnSelect id='userNavBarContainer'>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="#brand">
@@ -21,13 +21,16 @@ const NavigationBar = (props) => {
       <Navbar.Collapse>
         <Nav pullRight>
           <NavItem componentClass={Link} href="/" to="/">
-            Home
+            Borrowers
               </NavItem>
           <NavItem componentClass={Link} href="/" to="/">
-            Page2
+            Investors
               </NavItem>
-           <NavItem href="#" onClick={() => props.showLoginModal('showLoginModal')}>
-          <i className="fa fa-sign-in"></i>&nbsp;LogIn
+          <NavItem componentClass={Link} href="/" to="/">
+            My Proposals
+              </NavItem>
+          <NavItem href="#">
+            <i className="fa fa-sign-out"></i>&nbsp;Logout
       </NavItem>
         </Nav>
       </Navbar.Collapse>
@@ -36,4 +39,4 @@ const NavigationBar = (props) => {
   return navBarSection;
 };
 
-export default NavigationBar;
+export default UserNavigationBar;

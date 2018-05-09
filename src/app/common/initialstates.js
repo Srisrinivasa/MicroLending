@@ -22,6 +22,10 @@ const initialState =  {
       selectedLender: {},
       showLoanModal: false,
     },
+    loginReducer: {
+      walletAddress: '',
+      loginPassword: '',
+    },
   };
 
 export default initialState;

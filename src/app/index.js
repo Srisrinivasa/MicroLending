@@ -7,13 +7,18 @@ import store from './store';
 import App from './container/App/App.jsx';
 import './index.css';
 import 'font-awesome/css/font-awesome.css';
-import Home from '../app/components/Home/Home';
+import Home from './components/Home/Home';
+import DashBoard from './components/UserPages/DashBoard/DashBoard.jsx';
+import BorrowerList from './container/Borrower/BorrowerList.jsx';
 
 render(
 <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} >
                 <IndexRoute component={Home} />
+            </Route>
+            <Route path="/dashBoard" component={DashBoard} >
+                <IndexRoute component={BorrowerList} />                
             </Route>
         </Router>
     </Provider>,
