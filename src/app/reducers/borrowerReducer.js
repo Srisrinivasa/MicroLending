@@ -13,12 +13,7 @@ export default function borrowerReducer(state = initialState.borrowerReducer, ac
       [action.payload.name]: action.payload.value,
     };
     return state;
-  case 'SHOW_LOAN_MODAL':
-    state = {
-            ...state,
-            showLoanModal: action.showLoanModal,
-          };
-    return state;
+
   case 'UPDATE_LENDER':
     state = {
             ...state,
@@ -37,12 +32,7 @@ export default function borrowerReducer(state = initialState.borrowerReducer, ac
             [action.payload]: false,
           };
     return state;
-  case 'CLOSE_LOAN_MODAL':
-    state = {
-            ...state,
-            showLoanModal: action.showLoanModal,
-          };
-    return state;
+
   default:
     return state;
 }

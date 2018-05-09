@@ -26,7 +26,7 @@ const NavigationBar = (props) => {
           <NavItem componentClass={Link} href="/" to="/">
             Page2
               </NavItem>
-           <NavItem href="#">
+           <NavItem href="#" onClick={() => props.showLoginModal('showLoginModal')}>
           <i className="fa fa-sign-in"></i>&nbsp;LogIn
       </NavItem>
         </Nav>
