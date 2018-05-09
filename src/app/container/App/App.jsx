@@ -8,7 +8,7 @@ import './App.scss';
 
 class App extends React.Component {
   render() {
-    let loanForm = (
+    let loginForm = (
         <form onSubmit={this.applyLoanForm}>
                 <div className="form-group">
                     <label>Wallet address:</label>
@@ -43,7 +43,7 @@ class App extends React.Component {
                 <BootStrapModal
                 handleClose={() => this.props.LoginSetFalse('showLoginModal')}
                 heading="Login Form"
-                body={loanForm}
+                body={loginForm}
                 submit={this.applyLoanForm}
                 show={this.props.loginReducer.showLoginModal}
             />

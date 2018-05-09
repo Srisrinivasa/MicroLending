@@ -9,7 +9,7 @@ import './index.css';
 import 'font-awesome/css/font-awesome.css';
 import Home from './components/Home/Home';
 import DashBoard from './components/UserPages/DashBoard/DashBoard.jsx';
-import BorrowerList from './container/Borrower/BorrowerList.jsx';
+import UserLandingPage from './components/UserPages/UserLandingPage/UserLandingPage.jsx';
 
 render(
 <Provider store={store}>
@@ -18,7 +18,7 @@ render(
                 <IndexRoute component={Home} />
             </Route>
             <Route path="/dashBoard" component={DashBoard} >
-                <IndexRoute component={BorrowerList} />                
+                <IndexRoute component={UserLandingPage} />                
             </Route>
         </Router>
     </Provider>,

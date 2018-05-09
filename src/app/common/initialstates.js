@@ -25,6 +25,13 @@ const initialState =  {
     loginReducer: {
       walletAddress: '',
       loginPassword: '',
+      showLoginModal: false,
+    },
+    ULPReducer: {
+      showAddProposalModal: false,
+      proposalAmount: '',
+      proposalTenure: 6,
+      proposalROI: '',
     },
   };
 
