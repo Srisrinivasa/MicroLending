@@ -1,0 +1,15 @@
+#userNavBarContainer {
+    background-color: #0f2944;
+    border-radius: 0px;
+    border: none;
+    a {
+        color: white;
+            strong {
+                cursor: default;
+            }
+    }
+    a:hover {
+        background-color:  white;
+        color: #0f2944
+    }
+}
