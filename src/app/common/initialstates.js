@@ -30,8 +30,11 @@ const initialState =  {
     ULPReducer: {
       showAddProposalModal: false,
       proposalAmount: '',
-      proposalTenure: 6,
+      proposalTenure: '',
       proposalROI: '',
+    },
+    ProposalsReducer: {
+      proposalsList: [],
     },
   };
 

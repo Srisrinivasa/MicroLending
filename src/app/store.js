@@ -5,8 +5,9 @@ import sampleReducer from './reducers/sampleReducer/sampleReducer.jsx';
 import borrowerReducer from './reducers/borrowerReducer';
 import loginReducer from './reducers/loginReducer';
 import ULPReducer from './reducers/ULPReducer';
+import ProposalReducer from './reducers/proposalsReducer.jsx';
 
-const allReducers = { sampleReducer, borrowerReducer, loginReducer, ULPReducer };
+const allReducers = { sampleReducer, borrowerReducer, loginReducer, ULPReducer, ProposalReducer };
 
 const store = createStore(combineReducers(allReducers), {},
     compose(

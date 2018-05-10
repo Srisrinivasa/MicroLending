@@ -1,6 +1,6 @@
 import React from 'react';
 import './UserNavigationBar.scss';
-import { Link } from 'react-router';
+import { IndexLink, Link } from 'react-router';
 import {
   Navbar, Nav, MenuItem, NavItem,
   NavDropdown
@@ -20,17 +20,20 @@ const UserNavigationBar = (props) => {
 
       <Navbar.Collapse>
         <Nav pullRight>
-          <NavItem componentClass={Link} activeClassName='activeLink' href="/dashBoard" to="/dashBoard">
+          <NavItem componentClass={IndexLink}
+            activeClassName='activeLink' href="/dashBoard" to="/dashBoard">
             Borrowers
               </NavItem>
-          <NavItem componentClass={Link} href="/" to="/">
+          <NavItem componentClass={Link} activeClassName='activeLink' href="/" to="/">
             Investors
               </NavItem>
 
           <NavDropdown title="My Proposals" id="proposalsDropDown">
-            <MenuItem className='menuItem' componentClass={Link} href="/" to="/" >Installments</MenuItem>
+            <MenuItem activeClassName='activeLink'
+              componentClass={Link} href="/" to="/" >Installments</MenuItem>
             <MenuItem divider />
-            <MenuItem componentClass={Link} href="/" to="/" >All Proposals</MenuItem>
+            <MenuItem activeClassName='activeLink'
+            componentClass={Link} href="/" to="/proposals">All Proposals</MenuItem>
           </NavDropdown>
 
           <NavItem href="#">

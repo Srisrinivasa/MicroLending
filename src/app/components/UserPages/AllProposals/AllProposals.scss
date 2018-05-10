@@ -1,0 +1,28 @@
+#AllProposalsSection {
+    h1 {
+        text-align: center;
+        color: #0f2944;
+    }
+    button {
+        background-color: #0F2944;
+        color: white;
+        border-radius: 15px;
+        outline: none;
+    }
+    .pagination {
+        .active {
+            a {
+                background-color: #0f2944;
+            }
+        }   
+    }
+    .yellowColor {
+        background-color: orange;
+    }
+    .redColor {
+        background-color: darkred;
+    }
+    .greenColor {
+        background-color: darkgreen;
+    }
+}

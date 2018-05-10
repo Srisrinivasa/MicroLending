@@ -11,12 +11,6 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 
 class BorrowerList extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      show: false,
-    };
-  }
 
   componentWillMount() {
     this.props.GetLenderList();
@@ -37,10 +31,10 @@ class BorrowerList extends React.Component {
     this.props.UpdateInput(event);
   };
 
-  handleClose = () => {
-    this.props.SetFalse('showLoanModal');
-    // browserHistory.push('/about');
-  };
+  // handleClose = () => {
+  //   this.props.SetFalse('showLoanModal');
+  //   // browserHistory.push('/about');
+  // };
 
   buttonFormatter = (cell, row) => {
     return <button className="btn btn-sm btn-primary"

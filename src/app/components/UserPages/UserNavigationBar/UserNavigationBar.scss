@@ -6,9 +6,6 @@
     .activeLink {
         color: sandybrown;
     }
-    // .activeLink::before {
-    //     content:"\f0a4";        
-    // }
 
     a {
         color: white;
@@ -18,12 +15,14 @@
     }
     .dropdown-menu {
         li {
-            a {
+            a:not(.activeLink) {
                 color:#0f2944;
             }
+            a.activeLink:hover {
+                    color: sandybrown;
+                }
+            }
         }
-    }
-
     a:hover {
         background-color:  white;
         color: #0f2944;

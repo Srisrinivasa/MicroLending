@@ -10,6 +10,7 @@ import 'font-awesome/css/font-awesome.css';
 import Home from './components/Home/Home';
 import DashBoard from './components/UserPages/DashBoard/DashBoard.jsx';
 import UserLandingPage from './components/UserPages/UserLandingPage/UserLandingPage.jsx';
+import AllProposals from './components/UserPages/AllProposals/AllProposals.jsx';
 
 render(
 <Provider store={store}>
@@ -19,6 +20,7 @@ render(
             </Route>
             <Route path="/dashBoard" component={DashBoard} >
                 <IndexRoute component={UserLandingPage} />                
+            <Route path="/proposals" component={AllProposals} />
             </Route>
         </Router>
     </Provider>,
