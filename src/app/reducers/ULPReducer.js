@@ -22,6 +22,7 @@ const ULPReducer = (state = initialState.ULPReducer, action) => {
         ...state,
         [action.payload.name]: action.payload.value,
       };
+    break;
   };
     return state;
   };

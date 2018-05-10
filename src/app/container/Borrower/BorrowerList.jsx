@@ -24,17 +24,12 @@ class BorrowerList extends React.Component {
 
   applyLoanForm = (event) => {
     event.preventDefault();
-    alert("Loan applied");
+    alert('Loan applied');
   };
 
   updateInput = (event) => {
     this.props.UpdateInput(event);
   };
-
-  // handleClose = () => {
-  //   this.props.SetFalse('showLoanModal');
-  //   // browserHistory.push('/about');
-  // };
 
   buttonFormatter = (cell, row) => {
     return <button className="btn btn-sm btn-primary"

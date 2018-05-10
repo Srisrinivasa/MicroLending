@@ -13,7 +13,6 @@ import { Badge } from 'react-bootstrap';
 
 class AllProposals extends React.Component {
   statusFormatter(status) {
-    debugger;
     return <Badge
     className={classNames({ 'greenColor': status === 'ACHIEVED',
       'yellowColor': status === 'PENDING',
@@ -97,7 +96,6 @@ class AllProposals extends React.Component {
 const mapStateToProps = (_state) => {
   let state = _state;
   return {
-
   };
 };
 

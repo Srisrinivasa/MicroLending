@@ -44,8 +44,8 @@ class UserLandingPage extends React.Component {
             <BorrowerList />
           </div>
         </div>
+        
         {/* Display Add Proposal Modal */}
-
         <BootStrapModal
           handleClose={() => this.props.ULPSetFalse('showAddProposalModal')}
           heading="Add Proposal"

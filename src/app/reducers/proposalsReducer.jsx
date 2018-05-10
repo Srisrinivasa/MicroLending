@@ -22,6 +22,7 @@ const proposalsReducer = (state = initialState.ProposalsReducer, action) => {
         ...state,
         [action.payload.name]: action.payload.value,
       };
+    break;
   };
     return state;
   };
