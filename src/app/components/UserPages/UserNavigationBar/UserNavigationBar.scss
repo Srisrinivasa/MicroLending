@@ -2,14 +2,30 @@
     background-color: #0f2944;
     border-radius: 0px;
     border: none;
+
+    .activeLink {
+        color: sandybrown;
+    }
+
     a {
         color: white;
-            strong {
-                cursor: default;
-            }
+        strong {
+            cursor: default;
+        }
     }
+    .dropdown-menu {
+        li {
+            a:not(.activeLink) {
+                color:#0f2944;
+            }
+            a.activeLink:hover {
+                    color: sandybrown;
+                }
+            }
+        }
     a:hover {
         background-color:  white;
-        color: #0f2944
+        color: #0f2944;
     }
-}
+    }
+

@@ -1,4 +1,4 @@
-#BorrowerSection {
+#AllProposalsSection {
     h1 {
         text-align: center;
         color: #0f2944;
@@ -15,5 +15,14 @@
                 background-color: #0f2944;
             }
         }   
+    }
+    .yellowColor {
+        background-color: orange;
+    }
+    .redColor {
+        background-color: darkred;
+    }
+    .greenColor {
+        background-color: darkgreen;
     }
 }
