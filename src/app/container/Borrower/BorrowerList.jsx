@@ -66,7 +66,7 @@ class BorrowerList extends React.Component {
     );
 
     return (
-      <section className='container-fluid' id='LenderSection'>
+      <section className='container-fluid' id='BorrowerSection'>
         <div className='row'>
           <div className='col-md-12'>
             <h1>Borrowers list</h1>

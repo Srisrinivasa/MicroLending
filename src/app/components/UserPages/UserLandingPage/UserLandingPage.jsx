@@ -23,7 +23,7 @@ class UserLandingPage extends React.Component {
             type="number" min='6' className="form-control" />
         </div>
         <div className="form-group">
-          <label>Tenure:</label>
+          <label>Rate of Interest(%):</label>
           <input value={this.props.ULPReducer.proposalROI}
             onChange={(event) => this.props.ULPUpdateInput(event)} name="proposalROI"
             type="number" className="form-control" />

@@ -1,4 +1,4 @@
-#LenderSection {
+#BorrowerSection {
     h1 {
         text-align: center;
         color: #0f2944;
@@ -9,5 +9,11 @@
         border-radius: 15px;
         outline: none;
     }
-
+    .pagination {
+        .active {
+            a {
+                background-color: #0f2944;
+            }
+        }   
+    }
 }
