@@ -12,7 +12,7 @@ import 'react-bootstrap-table/css/react-bootstrap-table.css';
 
 class BorrowerList extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.GetLenderList();
   }
 
@@ -26,10 +26,6 @@ class BorrowerList extends React.Component {
     alert('Loan applied');
   };
 
-  updateInput = (event) => {
-    this.props.UpdateInput(event);
-  };
-
   buttonFormatter = (cell, row) => {
     return <button className="btn btn-sm btn-primary"
       onClick={() => this.applyLoan(cell, row)}>Invest</button>;
@@ -37,17 +33,17 @@ class BorrowerList extends React.Component {
 
   render() {
     let loanForm = (
-      <form onSubmit={this.applyLoanForm}>
+      <form>
         <div className="form-group">
           <label>Lender Name:</label>
           <input value={this.props.borrowerReducer.lenderName}
-            onChange={this.updateInput} name="lenderName"
+            onChange={() => this.props.UpdateInput(event)} name="lenderName"
             type="text" className="form-control" id="lender_name" />
         </div>
         <div className="form-group">
           <label>Amount:</label>
           <input value={this.props.borrowerReducer.lenderAmount}
-            onChange={this.updateInput} name="lenderAmount"
+            onChange={() => this.props.UpdateInput(event)} name="lenderAmount"
             type="number" className="form-control" id="amount" />
         </div>
       </form>
@@ -94,7 +90,7 @@ class BorrowerList extends React.Component {
 
         {/* Display Modal */}
         <BootStrapModal
-          handleClose={() => this.props.SetFalse('showLoanModal')} heading="Login Form"
+          handleClose={() => this.props.SetFalse('showLoanModal')} heading="Lend Form"
           body={loanForm}
           submit={this.applyLoanForm}
           show={this.props.borrowerReducer.showLoanModal}

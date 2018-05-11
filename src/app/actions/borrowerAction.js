@@ -1,7 +1,24 @@
+import { CollectFundCon } from '../common/solidityAddresses.jsx';
+
 export function GetLenderList() {
-  return {
-      type: 'GET_LENDER_LIST',
-    };
+  return (dispatch) => {
+    return new Promise((resolve, reject) => {
+      return CollectFundCon.getAllProposalsForBorrowerList((error, result) => {
+        if (!error) {
+          resolve(result);
+        } else {
+          reject(error);
+          alert('Error in' + error.message);
+        }
+      });
+    }).then((result) => {
+      debugger;
+      console.log(result);
+    })
+    .catch((error) => {
+      alert('Something went wrong');
+    });
+  };
 }
 
 export function SetTrue(param) {
@@ -32,3 +49,7 @@ export function UpdateCurrentLender(lender) {
   };
 }
 
+          // dispatch({
+          //   type: 'GET_LENDER_LIST',
+          //   payload: ''
+          //   })
