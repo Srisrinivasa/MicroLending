@@ -6,13 +6,12 @@ import borrowerReducer from './reducers/borrowerReducer';
 import loginReducer from './reducers/loginReducer';
 import ULPReducer from './reducers/ULPReducer';
 import ProposalReducer from './reducers/proposalsReducer.jsx';
-import Promise from 'redux-promise-middleware';
 
 const allReducers = { sampleReducer, borrowerReducer, loginReducer, ULPReducer, ProposalReducer };
 
 const store = createStore(combineReducers(allReducers), {},
     compose(
-        applyMiddleware(logger, thunk, Promise()),
+        applyMiddleware(logger, thunk),
         window.devToolsExtension ? window.devToolsExtension() : f => f
     ));
 export default store;

@@ -1,5 +1,4 @@
 import { web3 } from '../common/solidityAddresses.jsx';
-import regeneratorRuntime from 'regenerator-runtime';
 
 export const LoginSetTrue = (param) => {
   return dispatch => {
@@ -28,26 +27,34 @@ export const LoginUpdateInput = (event) => {
   };
 };
 
+// login actions
+
 export function checkLogin(credentials) {
-  debugger;
-
-  // return dispatch => {
-  //   dispatch({
-  //     type: 'CHECK_LOGIN_SUCCESS',
-  //     result: web3.personal.unlockAccount(credentials.address, credentials.key),
-  //   });
-  // };
-
-  return new Promise((resolve, reject) => {
-    web3.personal.unlockAccount(credentials.address, credentials.key, function (error, result) {
-      if (!error) {
-        resolve(result);
-        console.log(result);
-      } else {
-        reject(error);
-        console.log(error.message);
-      }
-    });
-  });
-
+  return (dispatch) => {
+    checkaccount(credentials).then((final) => {
+        alert('async', final); //async action
+      })
+      .catch((error) => {
+        alert('caught error outside');
+        console.log('outside ---', error.message);
+      });
+  };
 };
+
+// checking account and unlocking it for login
+
+const checkaccount = (credentials, result) => {
+      return new Promise((resolve, reject) => {
+        return web3.personal.unlockAccount(credentials.address, credentials.key,
+         (error, result) => {
+          if (!error) {
+            alert('Success');
+            console.log(result);
+            resolve(result);            //resolve is necessary to call async action
+          } else {
+            alert('caught error inside');
+            console.log(error.message);
+          }
+        });
+      });
+    };
