@@ -22,6 +22,22 @@ const loginReducer = (state = initialState.loginReducer, action) => {
         ...state,
         [action.payload.name]: action.payload.value,
       };
+
+    case 'CHECK_LOGIN_REQUEST':
+      state = {
+        ...state,
+        isLoading: true,
+      };
+    break;
+
+    case 'CHECK_LOGIN_SUCCESS':
+      state = {
+        ...state,
+        isLoading: false,
+        isValid: action.result,
+      };
+    break;
+
   };
     return state;
   };

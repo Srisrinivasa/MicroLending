@@ -21,7 +21,7 @@ class MyInstallments extends React.Component {
       <section className='container-fluid' id='MyInstallmentsSection'>
         <div className='row'>
           <div className='col-md-12'>
-            <h1>All Proposals</h1>
+            <h1>My Installments</h1>
             <BootstrapTable
               data={[{
                 ID: 1,
