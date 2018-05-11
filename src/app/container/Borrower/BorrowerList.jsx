@@ -17,7 +17,6 @@ class BorrowerList extends React.Component {
   }
 
   applyLoan = (cell, row) => {
-    console.log(this.props);
     this.props.UpdateCurrentLender(row);
     this.props.SetTrue('showLoanModal');
   };
@@ -95,7 +94,7 @@ class BorrowerList extends React.Component {
 
         {/* Display Modal */}
         <BootStrapModal
-          handleClose={this.handleClose} heading="Login Form"
+          handleClose={() => this.props.SetFalse('showLoanModal')} heading="Login Form"
           body={loanForm}
           submit={this.applyLoanForm}
           show={this.props.borrowerReducer.showLoanModal}

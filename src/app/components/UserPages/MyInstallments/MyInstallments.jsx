@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
-import './AllProposals.scss';
+import './MyInstallments.scss';
 import * as proposalActions from '../../../actions/ProposalActions.jsx';
 import classNames from 'classnames';
 
@@ -11,28 +11,24 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import { Badge } from 'react-bootstrap';
 
-class AllProposals extends React.Component {
+class MyInstallments extends React.Component {
   statusFormatter(status) {
-    return <Badge
-    className={classNames({ 'greenColor': status === 'ACHIEVED',
-      'yellowColor': status === 'PENDING',
-      'redColor': status === 'FAILED', })}>
-    {status}</Badge>;
+    return <button className='btn btn-primary'>Pay EMI</button>;
   }
 
   render() {
     return (
-      <section className='container-fluid' id='AllProposalsSection'>
+      <section className='container-fluid' id='MyInstallmentsSection'>
         <div className='row'>
           <div className='col-md-12'>
-            <h1>All Proposals</h1>
+            <h1>My Installments</h1>
             <BootstrapTable
               data={[{
                 ID: 1,
                 Tenure: 12,
                 Amt: 10000,
                 ROI: 8.5,
-                subDate: new Date(Date.now()).toLocaleString(),
+                subDate: (Date.now().toLocaleString()),
                 Fund: 8000,
                 Status: 'PENDING',
               },
@@ -41,7 +37,7 @@ class AllProposals extends React.Component {
                 Tenure: 24,
                 Amt: 20000,
                 ROI: 9.0,
-                subDate: new Date(Date.now()).toLocaleString(),
+                subDate: (Date.now().toLocaleString()),
                 Fund: 20000,
                 Status: 'ACHIEVED',
               },
@@ -50,7 +46,7 @@ class AllProposals extends React.Component {
                 Tenure: 12,
                 Amt: 90000,
                 ROI: 11,
-                subDate: new Date(Date.now()).toLocaleString(),
+                subDate: (Date.now().toLocaleString()),
                 Fund: 8000,
                 Status: 'FAILED',
               },
@@ -74,16 +70,12 @@ class AllProposals extends React.Component {
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='subDate'>
-                Submitted date
-              </TableHeaderColumn>
-
-              <TableHeaderColumn dataField='Fund'>
-                Funding Achieved
+                Next due date
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='Status'
                dataFormat={this.statusFormatter} >
-                Status
+                Pay EMI
               </TableHeaderColumn>
             </BootstrapTable>
           </div>
@@ -104,4 +96,4 @@ const mapDispatchToProps = (_dispatch) => {
   return bindActionCreators(proposalActions, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProposals);
+export default connect(mapStateToProps, mapDispatchToProps)(MyInstallments);

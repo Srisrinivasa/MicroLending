@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "bcrypt": "^2.0.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
@@ -31,7 +32,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "web3": "^0.18.2"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",

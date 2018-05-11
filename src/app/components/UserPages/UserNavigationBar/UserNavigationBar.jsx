@@ -30,7 +30,7 @@ const UserNavigationBar = (props) => {
 
           <NavDropdown title="My Proposals" id="proposalsDropDown">
             <MenuItem activeClassName='activeLink'
-              componentClass={Link} href="/" to="/" >Installments</MenuItem>
+              componentClass={Link} href="/" to="/installments" >Installments</MenuItem>
             <MenuItem divider />
             <MenuItem activeClassName='activeLink'
             componentClass={Link} href="/" to="/proposals">All Proposals</MenuItem>

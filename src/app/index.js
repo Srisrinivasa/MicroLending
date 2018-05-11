@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import DashBoard from './components/UserPages/DashBoard/DashBoard.jsx';
 import UserLandingPage from './components/UserPages/UserLandingPage/UserLandingPage.jsx';
 import AllProposals from './components/UserPages/AllProposals/AllProposals.jsx';
+import MyInstallments from './components/UserPages/MyInstallments/MyInstallments.jsx';
 
 render(
 <Provider store={store}>
@@ -21,6 +22,7 @@ render(
             <Route path="/dashBoard" component={DashBoard} >
                 <IndexRoute component={UserLandingPage} />                
             <Route path="/proposals" component={AllProposals} />
+            <Route path="/installments" component={MyInstallments} />
             </Route>
         </Router>
     </Provider>,

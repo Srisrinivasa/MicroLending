@@ -7,9 +7,15 @@ import BootStrapModal from '../../components/Modal/BootStrapModal.jsx';
 import './App.scss';
 
 class App extends React.Component {
+  onLogin() {
+    let credentials = { address: this.props.loginReducer.walletAddress,
+      key: this.props.loginReducer.loginPassword, };
+    this.props.checkLogin(credentials);
+  }
+
   render() {
     let loginForm = (
-        <form onSubmit={this.applyLoanForm}>
+        <form>
                 <div className="form-group">
                     <label>Wallet address:</label>
                     <input value={this.props.loginReducer.walletAddress}
@@ -44,7 +50,7 @@ class App extends React.Component {
                 handleClose={() => this.props.LoginSetFalse('showLoginModal')}
                 heading="Login Form"
                 body={loginForm}
-                submit={this.applyLoanForm}
+                submit={() => this.onLogin()}
                 show={this.props.loginReducer.showLoginModal}
             />
             </section>
