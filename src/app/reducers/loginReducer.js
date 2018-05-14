@@ -23,18 +23,33 @@ const loginReducer = (state = initialState.loginReducer, action) => {
         [action.payload.name]: action.payload.value,
       };
 
-    case 'CHECK_LOGIN_REQUEST':
+    case 'CHECK_LOGIN_PENDING':
       state = {
         ...state,
         isLoading: true,
       };
     break;
 
-    case 'CHECK_LOGIN_SUCCESS':
+    case 'CHECK_LOGIN_FULFILLED':
       state = {
         ...state,
         isLoading: false,
-        isValid: action.result,
+        isValid: action.payload,
+      };
+    break;
+
+    case 'CHECK_LOGIN_REJECTED':
+      state = {
+        ...state,
+        isLoading: false,
+        isValid: action.payload,
+      };
+    break;
+
+    case 'LOGIN_SET_VALUE':
+      state = {
+        ...state,
+        [action.payload.setFor]: action.payload.setVal,
       };
     break;
 

@@ -13,9 +13,11 @@ import 'react-bootstrap-table/css/react-bootstrap-table.css';
 class BorrowerList extends React.Component {
 
   componentDidMount() {
-    this.props.GetLenderList();
+    // this.props.GetLenderList();
   }
-
+  componentWillUnmount() {
+    this.props.SetFalse('showLoanModal');
+  }
   applyLoan = (cell, row) => {
     this.props.UpdateCurrentLender(row);
     this.props.SetTrue('showLoanModal');

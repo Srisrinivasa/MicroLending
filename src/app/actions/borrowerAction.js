@@ -8,15 +8,13 @@ export function GetLenderList() {
           resolve(result);
         } else {
           reject(error);
-          alert('Error in' + error.message);
+          alert('Error in \n' + error.message);
         }
       });
-    }).then((result) => {
-      debugger;
-      console.log(result);
     })
     .catch((error) => {
-      alert('Something went wrong');
+      console.log(error.message);
+      alert('Error: \n' + error.message);
     });
   };
 }
@@ -49,7 +47,7 @@ export function UpdateCurrentLender(lender) {
   };
 }
 
-          // dispatch({
-          //   type: 'GET_LENDER_LIST',
-          //   payload: ''
-          //   })
+// dispatch({
+//   type: 'GET_LENDER_LIST',
+//   payload: ''
+//   })
