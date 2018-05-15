@@ -18,7 +18,9 @@ export const GetStarted = (props) => {
                             accompanied by English versions from the 1914 translation by H. Rackham.
                         </em>
                         </p>
-                        <strong className='text-muted'>No middleman, cash out whenever you want</strong>
+                        <strong className='text-muted'>
+                            No middleman, cash out whenever you want
+                        </strong>
                     </div>
                     <br />
                     <div className="row">
@@ -63,4 +65,4 @@ export const GetStarted = (props) => {
     );
 
     return GetStartedSection;
-};
+  };

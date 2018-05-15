@@ -3,6 +3,7 @@ import './Home.scss';
 import BorrowerList from '../../container/Borrower/BorrowerList.jsx';
 import { GetStarted } from '../GetStarted/GetStarted.jsx';
 import { UserHelp } from '../UserHelp/UserHelp.jsx';
+import { Breadcrumb } from 'react-bootstrap';
 
 const Home = () => {
     return (
@@ -20,18 +21,23 @@ const Home = () => {
                 <br />
             </div>
 
-            <div className="row no-margin">
+            <div className="row no-margin" id='borrowerPane'>
                 <div className="col-md-12">
                     <BorrowerList />
                 </div>
             </div>
-
-            <div className="row no-margin">
-                    <UserHelp />
+            <br />
+            <hr className='col-md-10 col-md-offset-1' />
+            <br />
+            <div className="row no-margin" id='userHelpPane'>
+                <UserHelp />
             </div>
-            
-            <div className="row no-margin">
-                    <GetStarted />
+            <br />
+            <br />
+            <hr className='col-md-10 col-md-offset-1' />
+
+            <div className="row no-margin" id='getStartedPane'>
+                <GetStarted />
             </div>
 
         </section>

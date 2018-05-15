@@ -8,7 +8,10 @@ import ULPReducer from './reducers/ULPReducer';
 import ProposalReducer from './reducers/proposalsReducer.jsx';
 import promise from 'redux-promise-middleware';
 
-const allReducers = { sampleReducer, borrowerReducer, loginReducer, ULPReducer, ProposalReducer };
+const allReducers = {
+    sampleReducer, borrowerReducer, loginReducer,
+    ULPReducer, ProposalReducer,
+  };
 
 const store = createStore(combineReducers(allReducers), {},
     compose(
