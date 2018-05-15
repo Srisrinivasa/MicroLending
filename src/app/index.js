@@ -7,7 +7,6 @@ import store from './store';
 import App from './container/App/App.jsx';
 import './index.css';
 import 'font-awesome/css/font-awesome.css';
-import Home from './components/Home/Home';
 import DashBoard from './components/UserPages/DashBoard/DashBoard.jsx';
 import UserLandingPage from './components/UserPages/UserLandingPage/UserLandingPage.jsx';
 import AllProposals from './components/UserPages/AllProposals/AllProposals.jsx';
@@ -16,9 +15,7 @@ import MyInstallments from './components/UserPages/MyInstallments/MyInstallments
 render(
 <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={App} >
-                <IndexRoute component={Home} />
-            </Route>
+            <Route path="/" component={App} />
             <Route path="/dashBoard" component={DashBoard} >
                 <IndexRoute component={UserLandingPage} />                
             <Route path="/proposals" component={AllProposals} />
