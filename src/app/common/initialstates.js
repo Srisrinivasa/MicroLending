@@ -1,26 +1,11 @@
 const initialState =  {
     borrowerReducer: {
-      lenders: [{
-          id: 1,
-          name: 'Abhijit',
-          price: 10000,
-          roi: 8.5,
-        },
-        {
-          id: 2,
-          name: 'Sathwik',
-          price: 5000,
-          roi: 8,
-        },
-        {
-          id: 3,
-          name: 'Kaushik',
-          price: 1000,
-          roi: 5,
-        },
-      ],
-      selectedLender: {},
+      selectedBorrower: {},
+      borrowerList: [],
       showLoanModal: false,
+      lenderWalletAddr: '',
+      lendingAmt: '',
+      lenderPassword: '',
     },
     loginReducer: {
       walletAddress: '',
@@ -29,12 +14,21 @@ const initialState =  {
     },
     ULPReducer: {
       showAddProposalModal: false,
+      showCredentialManager: false,
       proposalAmount: '',
       proposalTenure: '',
       proposalROI: '',
+      userPassword: '',
     },
     ProposalsReducer: {
-      proposalsList: [],
+      myProposals: [],
+      myInstallments: [],
+      showCredentialModal: false,
+      showCredentialManager: false,  //collect amount modal
+      selectedEMI: {},
+      userWalletAddr: '',
+      userPassword: '',
+      selectedCollectAmtRow: {},
     },
   };
 

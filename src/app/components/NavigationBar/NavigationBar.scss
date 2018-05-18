@@ -6,14 +6,18 @@
     width: 100%;
     position: absolute;
     top: 0;
+    
+     strong {
+        color: white;
+        cursor: default;
+    }
     a {
         color: white;
-            strong {
-                color: white;
-                cursor: default;
-            }
     }
     a:hover {
         background-color:  #0f2944;
+    }
+    img {
+        margin-top: -6px;
     }
 }

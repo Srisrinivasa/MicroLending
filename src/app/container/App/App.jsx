@@ -5,6 +5,7 @@ import NavigationBar from '../../components/NavigationBar/NavigationBar.jsx';
 import * as loginActions from '../../actions/loginActions.jsx';
 import BootStrapModal from '../../components/Modal/BootStrapModal.jsx';
 import './App.scss';
+import Home from '../../components/Home/Home';
 
 class App extends React.Component {
   onLogin() {
@@ -39,7 +40,7 @@ class App extends React.Component {
                             showLoginModal={(modalName) => this.props.LoginSetTrue(modalName)} />
                         </div>
                         <div className='row no-margin' id='bodySection'>
-                            {this.props.children}
+                            <Home />
                         </div>
                     </div>
                 </div>

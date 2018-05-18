@@ -1,30 +1,59 @@
 import initialState from '../common/initialstates';
 
 const ULPReducer = (state = initialState.ULPReducer, action) => {
-    switch (action.type) {
+  switch (action.type) {
 
     case 'ULP_SET_TRUE':
       state = {
-          ...state,
-          [action.payload]: true,
-        };
-    break;
+        ...state,
+        [action.payload]: true,
+      };
+      break;
 
     case 'ULP_SET_FALSE':
       state = {
-          ...state,
-          [action.payload]: false,
-        };
-    break;
+        ...state,
+        [action.payload]: false,
+      };
+      break;
 
     case 'ULP_UPDATE_INPUT':
       state = {
         ...state,
         [action.payload.name]: action.payload.value,
       };
-    break;
+      break;
+
+    case 'ULP_SET_VALUE':
+      state = {
+        ...state,
+        [action.payload.setFor]: action.payload.setVal,
+      };
+      break;
+
+    case 'ADD_PROPOSAL_PENDING':
+      state = {
+        ...state,
+        isPending: true,
+      };
+      break;
+
+    case 'ADD_PROPOSAL_FULFILLED':
+      state = {
+        ...state,
+        isPending: false,
+        tx: action.payload,
+      };
+      break;
+
+    case 'ADD_PROPOSAL_REJECTED':
+      state = {
+        ...state,
+        isPending: false,
+      };
+      break;
   };
-    return state;
-  };
+  return state;
+};
 
 export default ULPReducer;

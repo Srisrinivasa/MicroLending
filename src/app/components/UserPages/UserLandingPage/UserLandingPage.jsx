@@ -5,11 +5,47 @@ import BorrowerList from '../../../container/Borrower/BorrowerList.jsx';
 import * as ULPActions from '../../../actions/ULPActions.jsx';
 import BootStrapModal from '../../../components/Modal/BootStrapModal.jsx';
 import './UserLanding.scss';
+import hashFnv32a from '../../../common/hashFNV32a.jsx';
+import { CollectFundCon } from '../../../common/solidityAddresses.jsx';
+let regeneratorRuntime = require('regenerator-runtime');
 
 class UserLandingPage extends React.Component {
+  onAddProposal = () => {
+    let proposalDetails = {
+      proposalAmount: this.props.ULPReducer.proposalAmount,
+      proposalTenure: this.props.ULPReducer.proposalTenure,
+      proposalROI: this.props.ULPReducer.proposalROI,
+      walletAddress: this.props.walletAddress,
+      password: this.props.ULPReducer.userPassword,
+    };
+    this.props.AddProposal(proposalDetails);
+
+    // this.submitProposal(proposalDetails);
+  };
+
+  // async submitProposal(proposalDetails) {
+  //   const { proposalAmount, proposalTenure, proposalROI, walletAddress } = proposalDetails;
+  //   const randomNum = (hashFnv32a(Date.now(), false));
+  //   const str = randomNum.toString().substring(0, 7);
+  //   const ID = 'PROP' + str;
+  //   var tx = await CollectFundCon.submitProposal(ID, proposalAmount,
+  //   proposalROI, proposalTenure, walletAddress,
+  //     { from: walletAddress, gas: 20000000 }
+  //   );
+  // }
+  onShowCredentialManager() {
+    const { proposalAmount, proposalTenure, proposalROI } = this.props.ULPReducer;
+    if (!proposalAmount || !proposalTenure || !proposalROI) {
+      alert('Please fill all the fields');
+    } else {
+      this.props.ULPSetFalse('showAddProposalModal');
+      this.props.ULPSetTrue('showCredentialManager');
+    }
+  };
+
   render() {
     let ProposalForm = (
-      <form onSubmit={this.applyLoanForm}>
+      <form>
         <div className="form-group">
           <label>Amount:</label>
           <input value={this.props.ULPReducer.proposalAmount}
@@ -30,6 +66,23 @@ class UserLandingPage extends React.Component {
         </div>
       </form>
     );
+    let credentialForm = (
+      <form>
+        <div className="form-group">
+          <label>User Wallet Address:</label>
+          <input value={this.props.walletAddress}
+            disabled name="userWalletAddr"
+            type="text" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label>Password:</label>
+          <input value={this.props.ULPReducer.userPassword}
+            onChange={this.props.ULPUpdateInput} name="userPassword"
+            type="password" className="form-control" />
+        </div>
+      </form>
+    );
     return (
       <section className='container-fluid' id='UserLandingPageSection'>
         <div className="row no-margin">
@@ -44,14 +97,21 @@ class UserLandingPage extends React.Component {
             <BorrowerList />
           </div>
         </div>
-        
+
         {/* Display Add Proposal Modal */}
         <BootStrapModal
           handleClose={() => this.props.ULPSetFalse('showAddProposalModal')}
           heading="Add Proposal"
           body={ProposalForm}
-          submit={this.applyLoanForm}
+          submit={() => this.onShowCredentialManager()}
           show={this.props.ULPReducer.showAddProposalModal}
+        />
+        <BootStrapModal
+          handleClose={() => this.props.ULPSetFalse('showCredentialManager')}
+          heading="Enter Credentials"
+          body={credentialForm}
+          submit={() => this.onAddProposal()}
+          show={this.props.ULPReducer.showCredentialManager}
         />
       </section>
     );
@@ -62,6 +122,7 @@ const mapStateToProps = (_state) => {
   let state = _state;
   return {
     ULPReducer: state.ULPReducer,
+    walletAddress: state.loginReducer.walletAddress,
   };
 };
 

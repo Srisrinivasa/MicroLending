@@ -42,7 +42,6 @@ const loginReducer = (state = initialState.loginReducer, action) => {
       state = {
         ...state,
         isLoading: false,
-        isValid: action.payload,
       };
     break;
 

@@ -11,23 +11,30 @@ const NavigationBar = (props) => {
     <Navbar inverse collapseOnSelect id='navBarContainer'>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#brand">
+          <strong>
+            <img height='20px' width='50px' src={require('../../images/logo.png')} alt="logo"/>
+          </strong>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {/*<a href="#landing-home">*/}
             <strong>Micro-Lending</strong>
-          </a>
+          {/*</a>*/}
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
 
       <Navbar.Collapse>
         <Nav pullRight>
-          <NavItem componentClass={Link} href="/" to="/">
-            Home
+          <NavItem href="#borrowerPane">
+            BorrowerList
               </NavItem>
-          <NavItem componentClass={Link} href="/" to="/">
-            Page2
+          <NavItem href="#userHelpPane">
+            Help
               </NavItem>
-           <NavItem href="#" onClick={() => props.showLoginModal('showLoginModal')}>
-          <i className="fa fa-sign-in"></i>&nbsp;LogIn
+          <NavItem href="#getStartedPane">
+            Get Started
+              </NavItem>
+          <NavItem href="#" onClick={() => props.showLoginModal('showLoginModal')}>
+            <i className="fa fa-sign-in"></i>&nbsp;LogIn
       </NavItem>
         </Nav>
       </Navbar.Collapse>

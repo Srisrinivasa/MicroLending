@@ -30,7 +30,6 @@ export const LoginUpdateInput = (event) => {
 
 export const LoginSetValue = (params) => {
   return dispatch => {
-    debugger;
     dispatch({
       type: 'LOGIN_SET_VALUE',
       payload: params,
@@ -46,8 +45,13 @@ export function checkLogin(credentials) {
         resolve(web3.personal.unlockAccount(credentials.address, credentials.key));
       }),
     })
-    .catch(error => {
+    .then(() => {
+      dispatch(LoginSetValue({ setFor: 'loginPassword', setVal: '' }));
+      browserHistory.push('/dashBoard');
+    })
+    .catch((error) => {
       alert(error.message);
     });
   };
 };
+

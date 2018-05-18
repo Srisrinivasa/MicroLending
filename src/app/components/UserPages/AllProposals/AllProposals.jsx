@@ -4,7 +4,9 @@ import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import './AllProposals.scss';
 import * as proposalActions from '../../../actions/ProposalActions.jsx';
+import BootStrapModal from '../../../components/Modal/BootStrapModal.jsx';
 import classNames from 'classnames';
+import Countdown from 'react-countdown-now';
 
 // with es6
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
@@ -12,53 +14,98 @@ import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import { Badge } from 'react-bootstrap';
 
 class AllProposals extends React.Component {
-  statusFormatter(status) {
-    return <Badge
-    className={classNames({ 'greenColor': status === 'ACHIEVED',
-      'yellowColor': status === 'PENDING',
-      'redColor': status === 'FAILED', })}>
-    {status}</Badge>;
-  }
+  componentDidMount() {
+    this.props.getMyProposals(this.props.walletAddress);
+  };
+
+  collectAmountHandler = () => {
+    let { selectedCollectAmtRow, userPassword } = this.props.proposalsReducer;
+    if (this.props.proposalsReducer.userPassword) {
+      this.props.collectAmount(selectedCollectAmtRow, this.props.walletAddress, userPassword);
+    } else {
+      alert('Enter password');
+    }
+  };
+
+  showCredentialManager(selectedRow) {
+    debugger;
+    this.props.ProposalSetValue({ setFor: 'selectedCollectAmtRow', setVal: selectedRow },
+    this.props.ProposalSetTrue('ShowCredentialManager'));
+  };
+
+  statusFormatter = (status, selectedRow) => {
+    const renderer = ({ hours, minutes, seconds, completed }) => {
+        if (completed) {
+          return <button
+                className='btn btn-xs'
+                onClick={() => this.showCredentialManager(selectedRow)}>
+                  Collect Amount
+              </button>;
+        } else {
+          return <Badge className='greenColor'>Collect in {hours}:{minutes}:{seconds}</Badge>;
+        }
+      };
+
+    return <div>
+      {
+        (status === 'SUCCESS') ?
+        (
+          (selectedRow.ClaimStatus) ?
+            (
+              <Badge className='greenColor'>Claimed</Badge>
+            )
+            :
+            (
+              <Countdown date={selectedRow.ExpireDate} renderer={renderer} />
+            )
+        )
+        :
+        (
+          <Badge
+            className={classNames({
+              'yellowColor': status === 'PENDING',
+              'redColor': status === 'FAILED',
+            })}>
+            {status}</Badge>
+        )
+      }
+    </div>;
+  };
+
+  dateFormatter = (date) => {
+      debugger;
+      return (new Date(date).toLocaleString());
+    };
 
   render() {
+    let credentialForm = (
+      <form>
+        <div className="form-group">
+          <label>Wallet Address:</label>
+          <input value={this.props.walletAddress}
+            disabled name="userWalletAddr"
+            type="text" className="form-control" />
+        </div>
+
+        <div className="form-group">
+          <label>Password:</label>
+          <input value={this.props.proposalsReducer.userPassword}
+            onChange={this.props.ProposalUpdateInput} name="userPassword"
+            type="password" className="form-control" />
+        </div>
+      </form>
+    );
     return (
       <section className='container-fluid' id='AllProposalsSection'>
         <div className='row'>
           <div className='col-md-12'>
             <h1>All Proposals</h1>
             <BootstrapTable
-              data={[{
-                ID: 1,
-                Tenure: 12,
-                Amt: 10000,
-                ROI: 8.5,
-                subDate: new Date(Date.now()).toLocaleString(),
-                Fund: 8000,
-                Status: 'PENDING',
-              },
-              {
-                ID: 2,
-                Tenure: 24,
-                Amt: 20000,
-                ROI: 9.0,
-                subDate: new Date(Date.now()).toLocaleString(),
-                Fund: 20000,
-                Status: 'ACHIEVED',
-              },
-              {
-                ID: 1,
-                Tenure: 12,
-                Amt: 90000,
-                ROI: 11,
-                subDate: new Date(Date.now()).toLocaleString(),
-                Fund: 8000,
-                Status: 'FAILED',
-              },
-              ]}
+              data={this.props.proposalsReducer.myProposals}
               ordered={true}
               pagination>
               <TableHeaderColumn dataField='ID' isKey>
-                ID
+                Proposal ID
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='Amt'>
@@ -66,15 +113,20 @@ class AllProposals extends React.Component {
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='Tenure'>
-                Tenure
+                Tenure(in months)
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='ROI'>
-                Rate of Interest
+                Rate of Interest(%)
               </TableHeaderColumn>
 
-              <TableHeaderColumn dataField='subDate'>
+              <TableHeaderColumn dataField='SubDate'>
                 Submitted date
+              </TableHeaderColumn>
+
+              <TableHeaderColumn dataField='ExpireDate'
+                dataFormat={this.dateFormatter}  >
+                Expire date
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='Fund'>
@@ -82,12 +134,19 @@ class AllProposals extends React.Component {
               </TableHeaderColumn>
 
               <TableHeaderColumn dataField='Status'
-               dataFormat={this.statusFormatter} >
+                dataFormat={this.statusFormatter} >
                 Status
               </TableHeaderColumn>
             </BootstrapTable>
           </div>
         </div>
+        <BootStrapModal
+          handleClose={() => this.props.ProposalSetFalse('ShowCredentialManager')}
+          heading="Credential Manager"
+          body={credentialForm}
+          submit={() => this.collectAmountHandler()}
+          show={this.props.proposalsReducer.ShowCredentialManager}
+        />
       </section>
     );
   };
@@ -96,6 +155,8 @@ class AllProposals extends React.Component {
 const mapStateToProps = (_state) => {
   let state = _state;
   return {
+    proposalsReducer: state.proposalsReducer,
+    walletAddress: state.loginReducer.walletAddress,
   };
 };
 
