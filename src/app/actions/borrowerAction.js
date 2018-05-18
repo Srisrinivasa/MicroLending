@@ -82,7 +82,6 @@ export function UpdateCurrentLender(lender) {
 }
 
 export const InvestAmount = (investDetails) => {
-  debugger;
   const { proposalID, lendingAmt, lenderWalletAddr, lenderPassword } = investDetails;
   return (dispatch) => {
     return dispatch({

@@ -45,7 +45,6 @@ export const getMyProposals = (walletAddress) => {
         return resolve(CollectFundCon.getBorrrowerSpecificProposals(walletAddress));
       })
         .then((proposals) => {
-          debugger;
           let proposalData = [];
           for (let i = 0; i < proposals.length; i++) {
             let proposalDetails = CollectFundCon.getProposalDetailsByProposalID(proposals[i]);
@@ -89,7 +88,6 @@ export const getMyProposals = (walletAddress) => {
 };
 
 export const getMyInstallments = (walletAddress) => {
-  debugger;
   return dispatch => {
     dispatch({
       type: 'GET_MY_INSTALLMENT_IDS',

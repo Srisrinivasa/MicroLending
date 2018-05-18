@@ -1,7 +1,6 @@
 import initialState from '../common/initialstates';
 
 export default function borrowerReducer(state = initialState.borrowerReducer, action) {
-  debugger;
   switch (action.type) {
     case 'GET_BORROWER_IDS_FULFILLED':
       state = {

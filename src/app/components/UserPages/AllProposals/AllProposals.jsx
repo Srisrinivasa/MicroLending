@@ -28,7 +28,6 @@ class AllProposals extends React.Component {
   };
 
   showCredentialManager(selectedRow) {
-    debugger;
     this.props.ProposalSetValue({ setFor: 'selectedCollectAmtRow', setVal: selectedRow },
     this.props.ProposalSetTrue('ShowCredentialManager'));
   };
@@ -73,7 +72,6 @@ class AllProposals extends React.Component {
   };
 
   dateFormatter = (date) => {
-      debugger;
       return (new Date(date).toLocaleString());
     };
 
