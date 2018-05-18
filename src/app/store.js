@@ -5,12 +5,12 @@ import sampleReducer from './reducers/sampleReducer/sampleReducer.jsx';
 import borrowerReducer from './reducers/borrowerReducer';
 import loginReducer from './reducers/loginReducer';
 import ULPReducer from './reducers/ULPReducer';
-import ProposalReducer from './reducers/proposalsReducer.jsx';
+import proposalsReducer from './reducers/proposalsReducer.jsx';
 import promise from 'redux-promise-middleware';
 
 const allReducers = {
     sampleReducer, borrowerReducer, loginReducer,
-    ULPReducer, ProposalReducer,
+    ULPReducer, proposalsReducer,
   };
 
 const store = createStore(combineReducers(allReducers), {},
